@@ -1,0 +1,163 @@
+{
+ "current": {
+  "seoul": {
+   "pm10": 75,
+   "pm25": 42,
+   "grade": 3,
+   "stations": 19,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "busan": {
+   "pm10": 81,
+   "pm25": 31,
+   "grade": 3,
+   "stations": 27,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "daegu": {
+   "pm10": 65,
+   "pm25": 26,
+   "grade": 2,
+   "stations": 16,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "incheon": {
+   "pm10": 45,
+   "pm25": 18,
+   "grade": 2,
+   "stations": 20,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "gwangju": {
+   "pm10": 48,
+   "pm25": 25,
+   "grade": 2,
+   "stations": 24,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "daejeon": {
+   "pm10": 71,
+   "pm25": 34,
+   "grade": 2,
+   "stations": 15,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "ulsan": {
+   "pm10": 89,
+   "pm25": 52,
+   "grade": 3,
+   "stations": 5,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "sejong": {
+   "pm10": 18,
+   "pm25": 10,
+   "grade": 1,
+   "stations": 26,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "gyeonggi": {
+   "pm10": 16,
+   "pm25": 7,
+   "grade": 1,
+   "stations": 20,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "gangwon": {
+   "pm10": 47,
+   "pm25": 20,
+   "grade": 2,
+   "stations": 25,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "chungbuk": {
+   "pm10": 70,
+   "pm25": 32,
+   "grade": 2,
+   "stations": 29,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "chungnam": {
+   "pm10": 57,
+   "pm25": 20,
+   "grade": 2,
+   "stations": 29,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "jeonbuk": {
+   "pm10": 17,
+   "pm25": 6,
+   "grade": 1,
+   "stations": 5,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "jeonnam": {
+   "pm10": 73,
+   "pm25": 41,
+   "grade": 3,
+   "stations": 28,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "gyeongbuk": {
+   "pm10": 80,
+   "pm25": 29,
+   "grade": 2,
+   "stations": 33,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "gyeongnam": {
+   "pm10": 60,
+   "pm25": 27,
+   "grade": 2,
+   "stations": 13,
+   "dataTime": "2026-11-02 22:00"
+  },
+  "jeju": {
+   "pm10": 32,
+   "pm25": 15,
+   "grade": 2,
+   "stations": 32,
+   "dataTime": "2026-11-02 22:00"
+  }
+ },
+ "forecast": {
+  "2026-11-02": {
+   "seoul": 3,
+   "busan": 3,
+   "daegu": 2,
+   "incheon": 2,
+   "gwangju": 2,
+   "daejeon": 2,
+   "ulsan": 3,
+   "sejong": 1,
+   "gyeonggi": 1,
+   "gangwon": 2,
+   "chungbuk": 2,
+   "chungnam": 2,
+   "jeonbuk": 1,
+   "jeonnam": 3,
+   "gyeongbuk": 2,
+   "gyeongnam": 2,
+   "jeju": 2
+  },
+  "2026-11-03": {
+   "seoul": 2,
+   "busan": 4,
+   "daegu": 2,
+   "incheon": 2,
+   "gwangju": 1,
+   "daejeon": 3,
+   "ulsan": 2,
+   "sejong": 2,
+   "gyeonggi": 1,
+   "gangwon": 1,
+   "chungbuk": 1,
+   "chungnam": 1,
+   "jeonbuk": 1,
+   "jeonnam": 3,
+   "gyeongbuk": 1,
+   "gyeongnam": 1,
+   "jeju": 3
+  }
+ }
+}

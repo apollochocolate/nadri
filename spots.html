@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추천 장소 · 나들이 지수</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <div>
+        <h1 id="title">추천 장소</h1>
+        <p>오늘 날씨에 맞춰 실내·야외 장소를 골라 드려요.</p>
+      </div>
+      <div class="controls" id="controls"></div>
+    </div>
+
+    <div id="mode"></div>
+
+    <div class="toolbar">
+      <div class="chips" id="chips"></div>
+      <input class="search" id="search" type="search" placeholder="장소 이름 검색">
+      <button class="btn" id="near-btn">📍 내 위치에서 가까운 순</button>
+    </div>
+
+    <div class="spots-layout">
+      <div id="map"></div>
+      <div class="spot-list" id="list"><div class="loading">관광정보(XML)를 불러오는 중…</div></div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script type="module" src="js/spots.js"></script>
+</body>
+</html>

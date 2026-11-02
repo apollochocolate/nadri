@@ -1,0 +1,9 @@
+{
+  "name": "nadri-index",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch-data.mjs --tour",
+    "sample": "node scripts/make-sample.mjs"
+  }
+}

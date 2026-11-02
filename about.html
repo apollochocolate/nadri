@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서비스 소개 · 나들이 지수</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="wrap">
+    <section class="about-hero">
+      <h1>나들이 지수는 이렇게 만들어져요</h1>
+      <p>공공데이터포털의 OpenAPI 3종을 조합해, 서버 없이 GitHub만으로 데이터를 모으고 가공해 보여주는 정적 웹앱입니다.</p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>시스템 구조</h2>
+        <div class="flow">
+          <div class="flow-box"><b>① 공공데이터포털 API</b><small>기상청 단기예보 (JSON)<br>에어코리아 대기오염 (JSON)<br>관광공사 관광정보 (XML)</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box"><b>② GitHub Actions</b><small>매시간 자동 실행 (cron)<br>서비스키는 Secrets에 보관<br>가공 후 data/ 폴더에 커밋</small></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box"><b>③ GitHub Pages</b><small>정적 JSON·XML 파일 로드<br>브라우저에서 점수 계산<br>Chart.js · Leaflet 시각화</small></div>
+        </div>
+        <p class="muted" style="margin:16px 0 0;font-size:14px">
+          브라우저에서 공공데이터 API를 직접 부르면 CORS 정책으로 막히고 서비스키도 노출됩니다.
+          그래서 수집은 GitHub Actions가 맡고, 웹페이지는 같은 출처의 파일만 읽도록 설계했어요.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>사용한 공공데이터 API</h2>
+        <div class="api-list">
+          <div class="api"><b>기상청 단기예보 조회서비스</b><span class="fmt json">JSON</span><small class="muted">getVilageFcst · 기온, 강수확률, 하늘상태, 강수형태, 풍속, 습도 (시간 단위, 3일)</small></div>
+          <div class="api"><b>에어코리아 대기오염정보</b><span class="fmt json">JSON</span><small class="muted">getCtprvnRltmMesureDnsty (시도별 실시간) · getMinuDustFrcstDspth (예보)</small></div>
+          <div class="api"><b>한국관광공사 국문 관광정보</b><span class="fmt xml">XML</span><small class="muted">areaBasedList2 · 지역별 관광지, 문화시설, 레포츠 등 (DOMParser로 파싱)</small></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>나들이 점수 산정 방식</h2>
+        <table class="weights">
+          <thead><tr><th>항목</th><th>가중치</th><th>계산 기준 (항목별 0~100점)</th></tr></thead>
+          <tbody>
+            <tr><td><b>강수</b></td><td>30%</td><td>100 − 강수확률, 실제 비·눈이 오면 0점</td></tr>
+            <tr><td><b>기온</b></td><td>25%</td><td>18~24℃ 만점, 벗어난 1℃마다 −6점</td></tr>
+            <tr><td><b>미세먼지</b></td><td>25%</td><td>PM10·PM2.5 중 나쁜 등급 기준 · 좋음 100 / 보통 75 / 나쁨 35 / 매우나쁨 0</td></tr>
+            <tr><td><b>하늘</b></td><td>10%</td><td>맑음 100 / 구름많음 75 / 흐림 50</td></tr>
+            <tr><td><b>바람</b></td><td>10%</td><td>4m/s 이하 만점, 7m/s까지 60점으로 완만히, 이후 급감</td></tr>
+          </tbody>
+        </table>
+        <p class="muted" style="font-size:14px;margin:14px 0 0">
+          시간마다 점수를 낸 뒤 활동 시간대(9~18시)를 평균해 하루 점수를 만들고,
+          연속 3시간 평균이 가장 높은 구간을 <b>추천 시간대</b>로 찾습니다(슬라이딩 윈도우).
+          오늘은 실시간 측정값, 내일부터는 미세먼지 예보 등급을 씁니다.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>점수 시뮬레이터 <span class="hint">값을 바꿔 보며 알고리즘을 확인해 보세요</span></h2>
+        <div class="sim">
+          <div id="sim-inputs"></div>
+          <div class="sim-result" id="sim-result"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>적용한 기술</h2>
+        <ul class="tech-list">
+          <li>GitHub Actions 예약 실행(cron)으로 데이터 자동 수집·커밋</li>
+          <li>JSON(기상·대기) + XML(관광) 두 형식 모두 파싱</li>
+          <li>위경도 → 기상청 격자 좌표 변환 (Lambert 정각원추도법)</li>
+          <li>3개 API 조합 + 가중치 기반 점수 알고리즘</li>
+          <li>Promise.all 병렬 로딩, async/await, 오류 처리</li>
+          <li>ES Modules로 브라우저와 Node.js가 같은 코드 공유</li>
+          <li>Chart.js 이중 축 차트 · Leaflet 지도</li>
+          <li>Geolocation API + 하버사인 공식 거리 계산</li>
+          <li>URL 파라미터·localStorage로 페이지 간 상태 유지</li>
+          <li>날씨에 따라 실내/야외 장소 우선 정렬</li>
+          <li>검색 디바운스, 반응형 레이아웃</li>
+          <li>서비스키 Secrets 보관, XSS 방지 이스케이프</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>데이터 상태</h2>
+        <div id="status" class="muted">불러오는 중…</div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script type="module" src="js/about.js"></script>
+</body>
+</html>

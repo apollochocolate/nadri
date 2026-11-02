@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시간대별 상세 · 나들이 지수</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <div>
+        <h1 id="title">시간대별 상세</h1>
+        <p>언제 나가면 가장 좋을지 한 시간 단위로 확인하세요.</p>
+      </div>
+      <div class="controls" id="controls"></div>
+    </div>
+
+    <div class="grid">
+      <section class="summary-row" id="summary"></section>
+
+      <section class="card">
+        <h2>시간대별 나들이 점수 <span class="hint">초록일수록 좋아요</span></h2>
+        <div class="chart-box"><canvas id="score-chart"></canvas></div>
+      </section>
+
+      <section class="card">
+        <h2>기온 · 강수확률</h2>
+        <div class="chart-box"><canvas id="weather-chart"></canvas></div>
+      </section>
+
+      <section class="card">
+        <h2>시간별 예보표 <span class="hint">추천 시간대는 초록색으로 표시돼요</span></h2>
+        <div class="hour-table-wrap" id="table"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script type="module" src="js/detail.js"></script>
+</body>
+</html>

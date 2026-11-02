@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나들이 지수 · 오늘 나가도 될까?</title>
+  <meta name="description" content="기상청 예보, 에어코리아 미세먼지, 한국관광공사 관광정보를 조합한 지역별 나들이 지수">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☀️</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="wrap">
+    <div class="page-head">
+      <div>
+        <h1>오늘, 나가도 될까?</h1>
+        <p>날씨 · 미세먼지 · 바람을 한 번에 따져 0~100점으로 알려드려요.</p>
+      </div>
+      <div class="controls" id="controls"></div>
+    </div>
+
+    <div class="grid">
+      <section id="score-area" class="card"><div class="loading">나들이 지수를 계산하는 중…</div></section>
+
+      <section class="card">
+        <h2>전국 나들이 순위 <span class="hint" id="rank-hint"></span></h2>
+        <div id="rank-list" class="rank-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script type="module" src="js/index.js"></script>
+</body>
+</html>
